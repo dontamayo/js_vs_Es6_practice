@@ -537,3 +537,113 @@
 // },0)
 
 // console.log(sumNum)
+
+
+//++++++++++ REDUCE HELPER part 2 ++++++++++++Condensing down to a single value+++//
+
+// //---i want to collect each value of each
+// var primaryColors = [
+//   {color: 'red'},
+//   {color: 'yellow'},
+//   {color: 'pink'},
+//   {color: 'blue'},
+
+// ]
+
+// //---using the MAP HELPER  --------//
+// //var allColors = primaryColors.map(allColor => allColor.color)
+
+// // //---USING THE REDUCE HELPER -----//
+// // var allColors = primaryColors.reduce(function(prev, primaryColor){
+// //   prev.push(primaryColor.color);
+
+// //   return prev;
+
+// // },[])
+
+// //---using one line arrow -------------//
+// var allColors = primaryColors.reduce((prev, primaryColor) =>(prev.push(primaryColor.color), prev),[])
+
+
+// console.log(allColors)
+
+
+//+++++more sample for  REDUCE ++++++++PRACTICAL WAY+++++//
+//So  here is given a string that contains some number of parentheses. Are the expressions correctly balanced so this would be a fantastic use of the reduce.
+
+//We know that we want a function that takes a string and returns a boolean of some kind and is  boolean basically says like is this is this expression balanced or not.
+
+// function balancedParens(string){
+//   return !string.split("").reduce(function(prev, char){
+//     if (prev < 0) { return prev; }
+//     if (char === "(") {return ++ prev;}
+//     if (char === ")") {return --prev; }
+//   },0);
+// }
+// balancedParens(')(');
+
+
+//+++ reduce test -++++++++++++//
+
+// var trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }];
+
+// var totalDistance = trips.reduce((prev, trip) => prev + trip.distance,0);
+
+// totalDistance
+
+//+++ reduce test 2 -++++++++++++//
+
+// var desks = [
+//   { type: 'sitting' },
+//   { type: 'standing' },
+//   { type: 'sitting' },
+//   { type: 'sitting' },
+//   { type: 'standing' }
+// ];
+
+// // var deskTypes = desks.reduce(function(pre, desk) {
+// //     if(desk.type ==='sitting') {
+// //         ++pre.sitting;
+// //     } else {
+// //         ++pre.standing
+// //     }
+// //     return pre;
+
+// // }, { sitting: 0, standing: 0 });
+
+//  //deskTypes;
+
+
+// //simple clever solution
+// var deskTypes = desks.reduce((tally, { type }) => {
+//   ++tally[type];
+//   return tally;
+// }, { sitting: 0, standing: 0 });
+
+//  deskTypes;
+
+//??++++++Practice test REDUCE AND FIND++++++++++//
+// write a function called "unique" that will remove all the duplicate values from an array.
+
+
+// var numbers = [1, 2, 3, 4, 4];
+
+// function unique(array) {
+//   return numbers.reduce(function(previous, number){
+//     if (previous.find(element => element === number)) return previous;
+
+//     previous.push(number);
+//     return previous;
+//   }, []);
+// }
+
+// console.log(unique());
+//output [1,2,3,4]
+
+// //=========other solutoion -----??
+
+// var unique = array => array.reduce((prev, item) => {
+//   return prev.find(el => el === item) ? prev : prev.concat(item)
+// }, []);
+
+// //console.log(unique(4))
