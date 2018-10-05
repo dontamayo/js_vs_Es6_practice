@@ -647,3 +647,462 @@
 // }, []);
 
 // //console.log(unique(4))
+
+//+++++++++ CONST AND LET ++++++++++ THE NEW VARIABLE ++++//
+//THEY NEVER CHANGE, NOT SUBJECT TO CHANGE
+
+// //classic vanilla
+// var name = 'jane';
+// var title = 'software engineer';
+// var hourlyWage = 40;
+
+// es6
+// const  name = 'jane' // never change
+// let title = 'software engineer'; // it can be change
+// let hourlyWage = 45; //it can be change
+
+// // some time later
+// title = 'senior software engineer';
+
+// console.log(title)
+
+
+//+++++++ TEMPLATE STRINGS =========//
+
+//vanilla
+// function getMessage(){
+//   const year = new Date().getFullYear();
+//   return "first year is " + year;
+
+// }
+
+// getMessage();
+
+
+//--template strings ---//
+// function getMessage(){
+//   const year = new Date().getFullYear();
+//   return `first year is ${year}`;
+
+// }
+
+// getMessage();
+
+//-------template other solution---//
+// function getMessage(){
+//   return `first year is ${new Date().getFullYear()}`
+// }
+// getMessage();
+
+ //++++++++++++++++ ARROW FUNCTION COMPLICATED+++++//
+
+//  const team = {
+//    members: ['niko', 'marco', 'pipoy'],
+//    teamName: 'Lincoln Boys',
+
+//    teamSummary: function(){
+//      return this.members.map(member => {
+//        return `${member} belong to ${this.teamName}`
+//      })
+//    }
+//  }
+
+//  team.teamSummary()
+
+//OR OTHE SOLUTION
+
+// teamSummary: function(){
+//    return this.members.map(member =>
+//       `${member} belong to ${this.teamName}`
+//     )
+//   }
+//  }
+
+//  team.teamSummary()
+
+
+//+++++++++++++ FIBBONACCI ARROW FUNCTIONS ++++//
+
+// const fibonacci = (n) => {
+//   if (n < 3) return 1;
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// };
+
+// fibonacci()
+
+
+
+
+// const profile = {
+//     name: 'Alex',
+//     getName: () => profile.name
+//     };
+
+// profile.getName()
+
+//++++++++++++++ DESTRUCTURING  ARRAYS++++++++++++++//
+
+// const companies = [
+//   'google',
+//   'facebook',
+//   'uber',
+//   'microsoft'
+// ]
+// const [names] = companies;
+// const firstCompanies = companies[0]
+
+//companies
+//console.log(firstCompanies)
+
+//or
+
+//const [names, ...rest]  = companies
+
+
+//++++++++++++++ DESTRUCTURING  ARRAYS part 2 ++++++++++++++//
+
+// const companies = [
+//   {name: 'Google', locaton: 'Mountain View'},
+//   {name: 'Facebook', locaton: 'Menlo Park'},
+//   {name: 'Uber', locaton: 'San Fransico'}
+// ];
+// //---- pulling all the companies
+// //console.log(companies)
+
+// //--- pulling google location, standard
+// //console.log(companies[0].locaton)
+
+// //---- destructuring --- pulling all location
+// const [{locaton}] = companies
+
+// locaton
+
+//++++++++++++++ DESTRUCTURING  ARRAYS part 3 ++++++++++++++//
+
+// const Google = {
+//   locations: ['mountain view', 'new york', 'london']
+// }
+
+// // const {locations} = Google;
+
+// //-----chaleenging and complicated
+// const {locations: [locations]} = Google
+
+//  console.log(locations);
+
+
+//++++++++++++++ DESTRUCTURING  ARRAYS PRACTICAL EXAMPLE++++++++++++++//
+
+
+// So here's the example I want to say that I want to write a function that is going to take a username
+
+// and password and I want to save it to a database or something like that.
+
+// So we'll call this function sign up.
+
+// So you'd like signing up the user.
+
+
+/* ----bad example
+function signup(username, password, email, dateOfBirth, City){
+  //create new user
+}
+
+signup('DOnato', 'mypassword', 'myemail@example', '1/1/1990', 'New York');
+
+signup(username, password, email, dateOfBirth, City)
+*/
+
+
+//-----the better way
+
+// function signup(){
+//   //create new user
+// }
+// const user = {
+//   username: 'DOnato',
+//   password: 'my_password',
+//   email: 'myemail@gmail.com',
+//   dateOfBirth: '1/1/90',
+//   city: 'New York'
+// }
+
+// signup(user)
+
+
+//++++++++++++++ DESTRUCTURING  ARRAYS PRACTICAL EXAMPLE++++++++++++++//
+
+// const points = [
+//   [4,5],
+//   [9,0],
+//   [11,3]
+// ]
+
+// points.map(([x,y]) => {
+//   return {x,y}
+// })
+
+
+//++++++++++++++ DESTRUCTURING  ARRAYS PRACTICAL EXAMPLE++++++++++++++//
+
+
+// const profile = {
+//   title: 'Engineer',
+//   department: 'Engineering'
+// };
+
+// function isEngineer(profile) {
+//   var title = profile.title;
+//   var department = profile.department;
+//   return title === 'Engineer' && department === 'Engineering';
+// }
+
+// const isEngineer = ({title, department}) => title === 'Engineer' && department === 'Engineering';
+
+//++++++++++++ Array destructuring in practice ++++++//
+// const classes = [
+//   [ 'Chemistry', '9AM', 'Mr. Darnick' ],
+//   [ 'Physics', '10:15AM', 'Mrs. Lithun'],
+//   [ 'Math', '11:30AM', 'Mrs. Vitalis' ]
+// ];
+
+// //const classesAsObject;
+
+// const classesAsObject = classes.map(([subject, time, teacher])=>{
+//     return {
+//         subject,
+//         time,
+//         teacher
+//     };
+// });
+
+//+++++++++++++++++++++++++++ applying all ++++++//
+ /*
+ use array destructuring, recursion and the rest/spread operators to create a function 'double' that will return a new array with all values inside of it multiplied by two. don not use an array helpers!. sure, the map, forEach, or reduce helpers would make this extremely easy but give it a shot the hard ways anyways.
+ */
+
+
+//  const numbers = [1, 2, 3];
+
+// // function double() {
+// //     return numbers * 2
+// // }
+
+// function double([num, ...rest]) {
+
+//   return !!num ? [num*2, ...double(rest)] : []
+// }
+
+
+// //--one line clver answer
+// // const double = ([number, ...rest]) =>
+// // number !== undefined ? [ number * 2, ...double(rest) ] : [];
+
+
+//  const numbers = [1, 2, 3];
+
+// const double = numbers.map((num)=> {
+//   return num.numbers * 2
+// })
+
+
+//++++++++++++++++ CLASSES ++++++++++++++++//
+
+// class Monster {
+//   constructor(options){
+//     this.name = options.name;
+//     this.health = 100;
+
+//   }
+// }
+// class Snake extends Monster{
+//   constructor(options){
+//     super(options)
+//   }
+//   bite(other){
+//     other.health -= 10
+//   }
+// }
+
+
+// // const godzilla = new Monster({name: 'GOdzilla'});
+
+// // godzilla;
+
+// const Python = new Snake ({name:'Python' });
+
+// Python;
+
+
+//++++++++++++++++ ES6 FOR OF LOOPS  ++++++++++++++++//
+
+// const numbers = [1,2,3,4];
+// let total = 0;
+
+// for (let number of numbers){
+//   total += number
+// }
+
+// console.log(numbers)
+// console.log(total)
+
+//++++++++++++++++ GENERATOR HARD TOPIC  ++++++++++++++++//
+// WHAT IS A GENERATOR = generator is a function that can be entered and exited
+
+// multiple times.
+// 1.
+// function clickme(){
+//   var j =0;
+//   for(var i=0; i<=4; i++){
+//     j +=i;
+//     alert('j is now:' + j);
+//   }
+//   alert('i'+i)
+// }
+
+// clickme
+
+//2.
+
+// function valueChecker(x){
+//   if(isNaN(x)) return;
+//   if(x < 10){
+//     console.log('thekhkvcxfn');
+//   }
+//   else{
+//     console.log('second')
+//   }
+// }
+// valueChecker
+
+// 3.
+// function welcome(user_name){
+//   alert("well, hello" + user_name)
+// }
+
+// welcome('foobar')
+
+
+
+// function counter(x){
+//   if(isNaN(x)){
+//     return false;
+//   }
+//   y += x;
+//   alert(y);
+//   return true;
+// }
+// counter()
+
+// function starter(){
+//   var x,y;
+//   x=9;
+//   y=multiplier(x);
+//   x=ender(y);
+//   alert(x);
+//   return true;
+// }
+
+// function multiplier(y){
+//   var x,z;
+//   x= 10;
+//   z= y *x;
+
+//   return z;
+// }
+// function ender(z){
+//   var x,y;
+//   x =5;
+//   y= multiplier(z+x);
+//   return y;
+// }
+
+// starter()
+
+// function email_checker(addr){
+//   var reg = new RegExp("^[A-Z0-9._%+-]+@[A-Z0-9.-}+\.[A-Z]{2,4}$")
+//   return reg.test(addr)
+// }
+
+// email_checker("dontamayo@gmail.com")
+
+
+//---------------------------GENERATOR--------------//
+// generaor can be used in iterator
+
+// function* colors(){
+//  yield 'red';
+//  yield 'blue';
+//  yield 'green';
+
+// }
+
+// const myColors = [];
+// for( let color of colors()) {
+//   myColors.push(color)
+// }
+
+// myColors;
+
+
+//================= creating PROMISES===============//
+//.. uses for ajax request, http request
+
+// then == resolve
+//rejected == catch
+
+// promise = new Promise((resolve, reject)=> {
+//   setTimeout(()=>{
+//     resolve();
+//   }, 3000)
+//   //resolve();
+//   //reject();
+
+// });
+
+// promise
+// .then(()=> {console.log('finally finsiehd')})
+// .then(()=>{console.log('im almost done with javascript')})
+// .catch(()=>{console.log('oh oh rejected')})
+
+
+
+//========= or from AJAX request=======================//
+
+// promise = new Promise((resolve, reject)=> {
+//   var request = newXHTMLRequest()
+//   //make request
+//   request.onload = ()=> {
+//     resolve();
+//   }
+// });
+
+// promise
+// .then(()=> {console.log('finally finsiehd')})
+// .then(()=>{console.log('im almost done with javascript')})
+// .catch(()=>{console.log('oh oh rejected')})
+
+
+
+
+//=========  AJAX request WITH FETCH es6 =======================//
+
+
+// This is something where we have to reach out to the Internet wait for something to happen and then only
+
+// after we get a response back if it is successful the promise is going to enter the results state and
+
+// then we could register a dot van helper to get access to the data.
+
+//url = "https://jsonplaceholder.typicode.com/posts";
+
+//------messing it with the url to get 400 + bad errors
+url = "https://jsonplaceholder.typicode123.com/posts";
+
+
+
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log('BAD',error))
